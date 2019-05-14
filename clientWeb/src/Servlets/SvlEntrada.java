@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
+import Facade.Local;
 import Facade.TipoLocal;
 
 
@@ -41,7 +42,7 @@ public class SvlEntrada extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		doFer();
+		doFer(request,response);
 	}
 
 	/**
@@ -50,22 +51,33 @@ public class SvlEntrada extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		doFer();
+		doFer(request,response);
 	}
 	
-	public TipoLocal[] doFer() {
+	public void doFer(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+		System.out.print("\nDins del servlet");
 		HttpSession sessio;
 		
-		Facade.TipoLocal[] tlResultat = null;
+		String nomLocal = request.getParameter("nomLocal");	
+		
+		sessio = request.getSession(true);
+				
+		Facade.Local[] tlResultat = null;
 		try{
 			Facade.ServeiWebServiceLocator service = new Facade.ServeiWebServiceLocator();
 			Facade.ServeiWeb port = service.getServeiWebPort();
-			tlResultat = port.cercaTipoLocal();
+			tlResultat = port.infoLocalPerNomLocal(nomLocal);
+			sessio.setAttribute("Locals", tlResultat);
 		}
 		catch (Exception e) { e.printStackTrace();}
 		
-		return tlResultat;	
+		try {
+			ServletContext context = getServletContext();
+			RequestDispatcher rd = context.getRequestDispatcher("/inici");
+			rd.forward(request, response);
+		}
+		catch ( Exception e ) {e.printStackTrace();}
 	}
 
 }

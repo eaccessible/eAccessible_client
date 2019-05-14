@@ -86,10 +86,10 @@ public class ServeiWebProxy implements Facade.ServeiWeb {
     serveiWeb.baixaLocal(arg0);
   }
   
-  public Facade.Local[] infoLocal(java.lang.String arg0) throws java.rmi.RemoteException, Facade.ExceptionController{
+  public Facade.Local[] infoLocalPerNomLocal(java.lang.String arg0) throws java.rmi.RemoteException, Facade.ExceptionController{
     if (serveiWeb == null)
       _initServeiWebProxy();
-    return serveiWeb.infoLocal(arg0);
+    return serveiWeb.infoLocalPerNomLocal(arg0);
   }
   
   
