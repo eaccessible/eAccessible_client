@@ -56,21 +56,53 @@ public class SvlEntrada extends HttpServlet {
 	
 	public void doFer(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		System.out.print("\nDins del servlet");
+		System.out.println("\nDins del servlet");
 		HttpSession sessio;
+		
+		String codiTipoLocal = request.getParameter("codiTipoLocal");
 		
 		String nomLocal = request.getParameter("nomLocal");	
 		
 		sessio = request.getSession(true);
 				
-		Facade.Local[] tlResultat = null;
-		try{
-			Facade.ServeiWebServiceLocator service = new Facade.ServeiWebServiceLocator();
-			Facade.ServeiWeb port = service.getServeiWebPort();
-			tlResultat = port.infoLocalPerNomLocal(nomLocal);
-			sessio.setAttribute("Locals", tlResultat);
+		Facade.Local[] locals = null;
+		if(!nomLocal.isEmpty()) { 					//NomLocal no buit
+			try{
+				Facade.ServeiWebServiceLocator service = new Facade.ServeiWebServiceLocator();
+				Facade.ServeiWeb port = service.getServeiWebPort();
+				locals = port.infoLocalPerNomLocal(nomLocal);
+			}
+			catch (Exception e) { e.printStackTrace();}
+			if(!codiTipoLocal.isEmpty()) {			//CodiTipoLocal no buit -> Filtrem Locals pel codiTipoLocal
+				
+				Facade.Local[] filtraLocals = new Facade.Local[locals.length];
+				int j=0;
+				for(int i=0; i<locals.length; i++) {
+					if(locals[i].getCoditipolocal() == Integer.parseInt(codiTipoLocal)) {
+						filtraLocals[j]=locals[i];
+						j++;
+					}
+				}
+				sessio.setAttribute("Locals", filtraLocals);
+				
+			}else {									//CodiTipoLocal buit
+				sessio.setAttribute("Locals", locals);
+			}
+		}else {										//NomLocal buit
+			if(!codiTipoLocal.isEmpty()) {			//CodiTipoLocal no buit
+				
+				try{
+					Facade.ServeiWebServiceLocator service = new Facade.ServeiWebServiceLocator();
+					Facade.ServeiWeb port = service.getServeiWebPort();
+					locals = port.infoLocalPerTipoLocal(Integer.parseInt(codiTipoLocal));
+					sessio.setAttribute("Locals", locals);
+				}
+				catch (Exception e) { e.printStackTrace();}
+				
+			}else {									//Cerca buida -> Missatge D'error
+				sessio.setAttribute("Locals", null);
+			}
 		}
-		catch (Exception e) { e.printStackTrace();}
 		
 		try {
 			ServletContext context = getServletContext();

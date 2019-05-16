@@ -28,16 +28,24 @@
 <body>
 <div data-role="navbar" id="navbar-1">
 	<ul>
-		<li><a  href="Cerca.html" data-icon="search">Cerca</a></li>
+		<li><a  href="Cerca.jsp" data-icon="search">Cerca</a></li>
 		<li><a href="#" data-icon="edit">Alta d'un local</a></li>
 	</ul>
 </div>
 
 
-<% Facade.Local[] tlResultat = (Local[]) session.getAttribute("Locals"); %>
+<% Facade.Local[] locals = (Local[]) session.getAttribute("Locals"); 
+if (locals == null){ %>
+<h3>No s'ha trobat cap local!</h3>	
+<% }else{ %>
 
-Hola, el primer local trobat és <%=tlResultat[0].getNomlocal()%> !! 
+<h1>Locals:</h1>
+<%for (int i=0; i<locals.length; i++){
 
+	if(locals[i] != null){%>
+		</br>
+		<%=locals[i].getNomlocal()%>
+<%}}}%>	
 	
 </body>
 </html>

@@ -27,12 +27,33 @@
 </div>
 	
 
+<%
+Facade.TipoLocal[] tipoLocal = null;
+try{
+	Facade.ServeiWebServiceLocator service = new Facade.ServeiWebServiceLocator();
+	Facade.ServeiWeb port = service.getServeiWebPort();
+	tipoLocal = port.cercaTipoLocal();
+}
+catch (Exception e) { e.printStackTrace();}
+
+%>
+
+
 <br>
 <form method="post" action="SvlEntrada">
 
 Cerca un local:
 <input type="text" name="nomLocal">
 
+Tipus de local
+<select name="codiTipoLocal"> 
+<option value="">  </option>
+<%for (int i=0; i<tipoLocal.length; i++){%>
+	<option value="<%=tipoLocal[i].getCoditipolocal()%>"> <%=tipoLocal[i].getNomtipolocalca()%> </option>
+<%} %>	
+</select>
+
+<input type="hidden"  name="codiTipoLocal" value="">
 
 <br>
 <input type="submit" value="Cercar">
