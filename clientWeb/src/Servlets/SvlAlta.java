@@ -1,7 +1,12 @@
 package Servlets;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
 
+import javax.naming.InitialContext;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -10,13 +15,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 import Facade.Local;
+import Facade.Accessibilitat;
+
 
 /**
- * Servlet implementation class SvlAlta
+ * Servlet implementation class SvlEntrada
  */
-@WebServlet("/SvlAlta")
+@WebServlet("/SvlEntrada")
 public class SvlAlta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,24 +50,36 @@ public class SvlAlta extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
+		doFer(request,response);
 	}
 	
 	public void doFer(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		System.out.print("\nDins del servlet");
+		System.out.println("\nDins del servlet");
 		HttpSession sessio;
 		
-		String nomLocal = request.getParameter("nomLocal");
-		
 		sessio = request.getSession(true);
-				
-		Facade.Local[] tlResultat = null;
+		
+		String nomLocal = request.getParameter("nomLocal");
+		String nomCarrer = request.getParameter("nomCarrer");
+		String nomVia = request.getParameter("nomVia");
+		int numero = Integer.parseInt(request.getParameter("numero"));
+		String observacions = request.getParameter("observacions");
+		
+		Local local = new Local();
+		local.setNomlocal(nomLocal);
+		local.setNomcarrer(nomCarrer);
+		local.setNomvia(nomVia);
+		local.setNumero(numero);		
+		local.setObservacions(observacions);
+		
+		Facade.Accessibilitat[] accessibilitat = null;
+		
 		try{
 			Facade.ServeiWebServiceLocator service = new Facade.ServeiWebServiceLocator();
 			Facade.ServeiWeb port = service.getServeiWebPort();
-			//tlResultat = port.altaLocal(nomLocal, arg1);
-			//sessio.setAttribute("Locals", tlResultat);
+			port.altaLocal(local, accessibilitat);
 		}
 		catch (Exception e) { e.printStackTrace();}
 		
