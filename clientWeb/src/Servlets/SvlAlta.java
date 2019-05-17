@@ -63,6 +63,7 @@ public class SvlAlta extends HttpServlet {
 		
 		String nomLocal = request.getParameter("nomLocal");
 		String nomCarrer = request.getParameter("nomCarrer");
+		int codiCarrer = Integer.parseInt(request.getParameter("codiCarrer"));
 		String nomVia = request.getParameter("nomVia");
 		int numero = Integer.parseInt(request.getParameter("numero"));
 		String observacions = request.getParameter("observacions");
@@ -70,16 +71,18 @@ public class SvlAlta extends HttpServlet {
 		Local local = new Local();
 		local.setNomlocal(nomLocal);
 		local.setNomcarrer(nomCarrer);
+		local.setCodicarrer(codiCarrer);
 		local.setNomvia(nomVia);
 		local.setNumero(numero);		
 		local.setObservacions(observacions);
 		
-		Facade.Accessibilitat[] accessibilitat = null;
+		Facade.Accessibilitat[] accessibilitats = null;
+		
 		
 		try{
 			Facade.ServeiWebServiceLocator service = new Facade.ServeiWebServiceLocator();
 			Facade.ServeiWeb port = service.getServeiWebPort();
-			port.altaLocal(local, accessibilitat);
+			port.altaLocal(local, accessibilitats);
 		}
 		catch (Exception e) { e.printStackTrace();}
 		

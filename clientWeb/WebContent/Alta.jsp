@@ -48,6 +48,8 @@ Dona d'alta un nou local:
 <br>
 Nom local:
 <input type="text" name="nomLocal">
+Codi carrer:
+<input type="text" name="codiCarrer">
 Nom carrer:
 <input type="text" name="nomCarrer">
 Nom via:
