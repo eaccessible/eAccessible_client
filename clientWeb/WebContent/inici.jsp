@@ -2,6 +2,7 @@
 <%@page import="Facade.Local"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="Classes.InfoLocal"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -34,7 +35,7 @@
 </div>
 
 
-<% Facade.Local[] locals = (Local[]) session.getAttribute("Locals"); 
+<% InfoLocal[] locals = (InfoLocal[]) session.getAttribute("Locals"); 
 if (locals == null){ %>
 <h3>No s'ha trobat cap local!</h3>	
 <% }else{ %>

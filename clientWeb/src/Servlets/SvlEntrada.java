@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
+import Classes.InfoLocal;
 import Facade.Local;
 import Facade.TipoLocal;
 
@@ -66,6 +67,8 @@ public class SvlEntrada extends HttpServlet {
 		sessio = request.getSession(true);
 				
 		Facade.Local[] locals = null;
+		InfoLocal[] infoLocals = null;
+		Facade.TipoLocal[] tipoLocals = null;
 		
 		if(!nomLocal.isEmpty() && !codiTipoLocal.isEmpty()) {
 			try{
@@ -90,8 +93,38 @@ public class SvlEntrada extends HttpServlet {
 				locals = port.infoLocalPerTipoLocal(Integer.parseInt(codiTipoLocal));
 			}
 			catch (Exception e) { e.printStackTrace();}
-		}	
-		sessio.setAttribute("Locals", locals);
+		}
+		
+		if(locals != null) {
+			try{
+				Facade.ServeiWebServiceLocator service = new Facade.ServeiWebServiceLocator();
+				Facade.ServeiWeb port = service.getServeiWebPort();
+				tipoLocals = port.cercaTipoLocal();
+			}
+			catch (Exception e) { e.printStackTrace();}
+			for(int i=0; i<locals.length; i++){
+				InfoLocal infoLocal = new InfoLocal();
+				infoLocal.setCodilocal(locals[i].getCodilocal());
+				infoLocal.setCoditipolocal(locals[i].getCoditipolocal());
+				infoLocal.setCodicarrer(locals[i].getCodicarrer());
+				infoLocal.setNomcarrer(locals[i].getNomcarrer());
+				infoLocal.setNomvia(locals[i].getNomvia());
+				infoLocal.setNumero(locals[i].getNumero());
+				infoLocal.setNomlocal(locals[i].getNomlocal());
+				infoLocal.setObservacions(locals[i].getObservacions());
+				infoLocal.setVerificat(locals[i].getVerificat());
+				
+				for(int j=0; i<tipoLocals.length; j++)
+					if(locals[i].getCoditipolocal() == tipoLocals[j].getCoditipolocal()) {
+						infoLocal.setNomtipolocalca(tipoLocals[j].getNomtipolocalca());
+						infoLocal.setNomtipolocales(tipoLocals[j].getNomtipolocales());
+						infoLocal.setNomtipolocalen(tipoLocals[j].getNomtipolocalen());
+					}
+			}
+		}
+		
+		
+		sessio.setAttribute("Locals", infoLocals);
 		
 		try {
 			ServletContext context = getServletContext();
