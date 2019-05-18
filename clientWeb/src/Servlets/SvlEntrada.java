@@ -66,43 +66,32 @@ public class SvlEntrada extends HttpServlet {
 		sessio = request.getSession(true);
 				
 		Facade.Local[] locals = null;
-		if(!nomLocal.isEmpty()) { 					//NomLocal no buit
+		
+		if(!nomLocal.isEmpty() && !codiTipoLocal.isEmpty()) {
+			try{
+				Facade.ServeiWebServiceLocator service = new Facade.ServeiWebServiceLocator();
+				Facade.ServeiWeb port = service.getServeiWebPort();
+				locals = port.infoLocalPerNomLocalICodiTipoLocal(nomLocal,Integer.parseInt(codiTipoLocal));
+			}
+			catch (Exception e) { e.printStackTrace();}
+			
+		}else if(!nomLocal.isEmpty()) {
 			try{
 				Facade.ServeiWebServiceLocator service = new Facade.ServeiWebServiceLocator();
 				Facade.ServeiWeb port = service.getServeiWebPort();
 				locals = port.infoLocalPerNomLocal(nomLocal);
 			}
 			catch (Exception e) { e.printStackTrace();}
-			if(!codiTipoLocal.isEmpty()) {			//CodiTipoLocal no buit -> Filtrem Locals pel codiTipoLocal
-				
-				Facade.Local[] filtraLocals = new Facade.Local[locals.length];
-				int j=0;
-				for(int i=0; i<locals.length; i++) {
-					if(locals[i].getCoditipolocal() == Integer.parseInt(codiTipoLocal)) {
-						filtraLocals[j]=locals[i];
-						j++;
-					}
-				}
-				sessio.setAttribute("Locals", filtraLocals);
-				
-			}else {									//CodiTipoLocal buit
-				sessio.setAttribute("Locals", locals);
+			
+		}else if(!codiTipoLocal.isEmpty()) {
+			try{
+				Facade.ServeiWebServiceLocator service = new Facade.ServeiWebServiceLocator();
+				Facade.ServeiWeb port = service.getServeiWebPort();
+				locals = port.infoLocalPerTipoLocal(Integer.parseInt(codiTipoLocal));
 			}
-		}else {										//NomLocal buit
-			if(!codiTipoLocal.isEmpty()) {			//CodiTipoLocal no buit
-				
-				try{
-					Facade.ServeiWebServiceLocator service = new Facade.ServeiWebServiceLocator();
-					Facade.ServeiWeb port = service.getServeiWebPort();
-					locals = port.infoLocalPerTipoLocal(Integer.parseInt(codiTipoLocal));
-					sessio.setAttribute("Locals", locals);
-				}
-				catch (Exception e) { e.printStackTrace();}
-				
-			}else {									//Cerca buida -> Missatge D'error
-				sessio.setAttribute("Locals", null);
-			}
-		}
+			catch (Exception e) { e.printStackTrace();}
+		}	
+		sessio.setAttribute("Locals", locals);
 		
 		try {
 			ServletContext context = getServletContext();
@@ -111,5 +100,4 @@ public class SvlEntrada extends HttpServlet {
 		}
 		catch ( Exception e ) {e.printStackTrace();}
 	}
-
 }

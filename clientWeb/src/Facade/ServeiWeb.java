@@ -8,6 +8,7 @@
 package Facade;
 
 public interface ServeiWeb extends java.rmi.Remote {
+    public Facade.Local[] infoLocalPerNomLocalICodiTipoLocal(java.lang.String arg0, int arg1) throws java.rmi.RemoteException, Facade.ExceptionController;
     public Facade.Local[] infoLocalPerTipoLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController;
     public void altaLocal(Facade.Local arg0, Facade.Accessibilitat[] arg1) throws java.rmi.RemoteException, Facade.ExceptionController;
     public Facade.Local[] localnoVerificat() throws java.rmi.RemoteException, Facade.ExceptionController;
