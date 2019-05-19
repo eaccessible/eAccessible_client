@@ -67,7 +67,6 @@ public class SvlEntrada extends HttpServlet {
 		sessio = request.getSession(true);
 				
 		Facade.Local[] locals = null;
-		InfoLocal[] infoLocals = null;
 		Facade.TipoLocal[] tipoLocals = null;
 		
 		if(!nomLocal.isEmpty() && !codiTipoLocal.isEmpty()) {
@@ -93,15 +92,18 @@ public class SvlEntrada extends HttpServlet {
 				locals = port.infoLocalPerTipoLocal(Integer.parseInt(codiTipoLocal));
 			}
 			catch (Exception e) { e.printStackTrace();}
-		}
+		}	
 		
 		if(locals != null) {
 			try{
 				Facade.ServeiWebServiceLocator service = new Facade.ServeiWebServiceLocator();
 				Facade.ServeiWeb port = service.getServeiWebPort();
 				tipoLocals = port.cercaTipoLocal();
+				
 			}
 			catch (Exception e) { e.printStackTrace();}
+			
+			InfoLocal[] infoLocals = new InfoLocal[locals.length];
 			for(int i=0; i<locals.length; i++){
 				InfoLocal infoLocal = new InfoLocal();
 				infoLocal.setCodilocal(locals[i].getCodilocal());
@@ -114,17 +116,21 @@ public class SvlEntrada extends HttpServlet {
 				infoLocal.setObservacions(locals[i].getObservacions());
 				infoLocal.setVerificat(locals[i].getVerificat());
 				
-				for(int j=0; i<tipoLocals.length; j++)
+				for(int j=0; j<tipoLocals.length; j++)
 					if(locals[i].getCoditipolocal() == tipoLocals[j].getCoditipolocal()) {
 						infoLocal.setNomtipolocalca(tipoLocals[j].getNomtipolocalca());
 						infoLocal.setNomtipolocales(tipoLocals[j].getNomtipolocales());
 						infoLocal.setNomtipolocalen(tipoLocals[j].getNomtipolocalen());
 					}
+				infoLocals[i] = infoLocal;
 			}
+
+			sessio.setAttribute("Locals", infoLocals);
+			
+		}else {
+			sessio.setAttribute("Locals", null);
 		}
 		
-		
-		sessio.setAttribute("Locals", infoLocals);
 		
 		try {
 			ServletContext context = getServletContext();

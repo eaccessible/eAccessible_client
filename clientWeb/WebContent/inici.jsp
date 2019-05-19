@@ -41,12 +41,10 @@ if (locals == null){ %>
 <% }else{ %>
 
 <h1>Locals:</h1>
-<%for (int i=0; i<locals.length; i++){
-
-	if(locals[i] != null){%>
+<%for (int i=0; i<locals.length; i++){%>
 		</br>
-		<%=locals[i].getNomlocal()%>
-<%}}}%>	
+		<li><a  href="Cerca.jsp" ><%=locals[i].getNomlocal()%>, <%=locals[i].getNomtipolocalca()%>, <%=locals[i].getNomvia()%>, <%=locals[i].getNomcarrer()%>, nº<%=locals[i].getNumero()%></a></li>
+<%}}%>	
 	
 </body>
 </html>
