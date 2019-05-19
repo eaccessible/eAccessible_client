@@ -2,6 +2,7 @@
 <%@page import="Facade.Local"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="Classes.InfoLocal"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -34,18 +35,16 @@
 </div>
 
 
-<% Facade.Local[] locals = (Local[]) session.getAttribute("Locals"); 
+<% InfoLocal[] locals = (InfoLocal[]) session.getAttribute("Locals"); 
 if (locals == null){ %>
 <h3>No s'ha trobat cap local!</h3>	
 <% }else{ %>
 
 <h1>Locals:</h1>
-<%for (int i=0; i<locals.length; i++){
-
-	if(locals[i] != null){%>
+<%for (int i=0; i<locals.length; i++){%>
 		</br>
-		<%=locals[i].getNomlocal()%>
-<%}}}%>	
+		<li><a  href="Cerca.jsp" ><%=locals[i].getNomlocal()%>, <%=locals[i].getNomtipolocalca()%>, <%=locals[i].getNomvia()%>, <%=locals[i].getNomcarrer()%>, nº<%=locals[i].getNumero()%></a></li>
+<%}}%>	
 	
 </body>
 </html>
