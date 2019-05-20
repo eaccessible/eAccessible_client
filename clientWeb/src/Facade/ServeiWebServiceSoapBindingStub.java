@@ -16,8 +16,9 @@ public class ServeiWebServiceSoapBindingStub extends org.apache.axis.client.Stub
     static org.apache.axis.description.OperationDesc [] _operations;
 
     static {
-        _operations = new org.apache.axis.description.OperationDesc[9];
+        _operations = new org.apache.axis.description.OperationDesc[11];
         _initOperationDesc1();
+        _initOperationDesc2();
     }
 
     private static void _initOperationDesc1(){
@@ -158,6 +159,45 @@ public class ServeiWebServiceSoapBindingStub extends org.apache.axis.client.Stub
         _operations[7] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("infoCaracteristicaTipoLocal");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "arg0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://Facade/", "caracteristicaTipoLocal"));
+        oper.setReturnClass(Facade.CaracteristicaTipoLocal[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        oper.addFault(new org.apache.axis.description.FaultDesc(
+                      new javax.xml.namespace.QName("http://Facade/", "ExceptionController"),
+                      "Facade.ExceptionController",
+                      new javax.xml.namespace.QName("http://Facade/", "ExceptionController"), 
+                      true
+                     ));
+        _operations[8] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("infoCaracteristica");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "arg0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://Facade/", "caracteristica"));
+        oper.setReturnClass(Facade.Caracteristica.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        oper.addFault(new org.apache.axis.description.FaultDesc(
+                      new javax.xml.namespace.QName("http://Facade/", "ExceptionController"),
+                      "Facade.ExceptionController",
+                      new javax.xml.namespace.QName("http://Facade/", "ExceptionController"), 
+                      true
+                     ));
+        _operations[9] = oper;
+
+    }
+
+    private static void _initOperationDesc2(){
+        org.apache.axis.description.OperationDesc oper;
+        org.apache.axis.description.ParameterDesc param;
+        oper = new org.apache.axis.description.OperationDesc();
         oper.setName("localsAccessibles");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "arg0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
         oper.addParameter(param);
@@ -172,7 +212,7 @@ public class ServeiWebServiceSoapBindingStub extends org.apache.axis.client.Stub
                       new javax.xml.namespace.QName("http://Facade/", "ExceptionController"), 
                       true
                      ));
-        _operations[8] = oper;
+        _operations[10] = oper;
 
     }
 
@@ -208,6 +248,20 @@ public class ServeiWebServiceSoapBindingStub extends org.apache.axis.client.Stub
             qName = new javax.xml.namespace.QName("http://Facade/", "accessibilitat");
             cachedSerQNames.add(qName);
             cls = Facade.Accessibilitat.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
+
+            qName = new javax.xml.namespace.QName("http://Facade/", "caracteristica");
+            cachedSerQNames.add(qName);
+            cls = Facade.Caracteristica.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
+
+            qName = new javax.xml.namespace.QName("http://Facade/", "caracteristicaTipoLocal");
+            cachedSerQNames.add(qName);
+            cls = Facade.CaracteristicaTipoLocal.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
@@ -614,12 +668,96 @@ public class ServeiWebServiceSoapBindingStub extends org.apache.axis.client.Stub
 }
     }
 
-    public Facade.Local[] localsAccessibles(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController {
+    public Facade.CaracteristicaTipoLocal[] infoCaracteristicaTipoLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
         _call.setOperation(_operations[8]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://Facade/", "infoCaracteristicaTipoLocal"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(arg0)});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (Facade.CaracteristicaTipoLocal[]) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (Facade.CaracteristicaTipoLocal[]) org.apache.axis.utils.JavaUtils.convert(_resp, Facade.CaracteristicaTipoLocal[].class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+    if (axisFaultException.detail != null) {
+        if (axisFaultException.detail instanceof java.rmi.RemoteException) {
+              throw (java.rmi.RemoteException) axisFaultException.detail;
+         }
+        if (axisFaultException.detail instanceof Facade.ExceptionController) {
+              throw (Facade.ExceptionController) axisFaultException.detail;
+         }
+   }
+  throw axisFaultException;
+}
+    }
+
+    public Facade.Caracteristica infoCaracteristica(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[9]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://Facade/", "infoCaracteristica"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(arg0)});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (Facade.Caracteristica) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (Facade.Caracteristica) org.apache.axis.utils.JavaUtils.convert(_resp, Facade.Caracteristica.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+    if (axisFaultException.detail != null) {
+        if (axisFaultException.detail instanceof java.rmi.RemoteException) {
+              throw (java.rmi.RemoteException) axisFaultException.detail;
+         }
+        if (axisFaultException.detail instanceof Facade.ExceptionController) {
+              throw (Facade.ExceptionController) axisFaultException.detail;
+         }
+   }
+  throw axisFaultException;
+}
+    }
+
+    public Facade.Local[] localsAccessibles(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[10]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);

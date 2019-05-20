@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/Facade/Accessibilitat.java=UTF-8
+encoding//src/Facade/Caracteristica.java=UTF-8
+encoding//src/Facade/CaracteristicaTipoLocal.java=UTF-8
 encoding//src/Facade/ExceptionController.java=UTF-8
 encoding//src/Facade/Local.java=UTF-8
 encoding//src/Facade/ServeiWeb.java=UTF-8

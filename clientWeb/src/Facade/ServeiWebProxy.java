@@ -92,6 +92,18 @@ public class ServeiWebProxy implements Facade.ServeiWeb {
     serveiWeb.baixaLocal(arg0);
   }
   
+  public Facade.CaracteristicaTipoLocal[] infoCaracteristicaTipoLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController{
+    if (serveiWeb == null)
+      _initServeiWebProxy();
+    return serveiWeb.infoCaracteristicaTipoLocal(arg0);
+  }
+  
+  public Facade.Caracteristica infoCaracteristica(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController{
+    if (serveiWeb == null)
+      _initServeiWebProxy();
+    return serveiWeb.infoCaracteristica(arg0);
+  }
+  
   public Facade.Local[] localsAccessibles(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController{
     if (serveiWeb == null)
       _initServeiWebProxy();
