@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>clientWeb</display-name>
+  <welcome-file-list>
+    <welcome-file>Cerca.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>index</display-name>
+    <servlet-name>index</servlet-name>
+    <jsp-file>/WEB-INF/index.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>index</servlet-name>
+    <url-pattern>/index</url-pattern>
+    <url-pattern>/index.jsp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>entrada</display-name>
+    <servlet-name>entrada</servlet-name>
+    <jsp-file>/entrada.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>entrada</servlet-name>
+    <url-pattern>/entrada</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>inici</display-name>
+    <servlet-name>inici</servlet-name>
+    <jsp-file>/inici.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>inici</servlet-name>
+    <url-pattern>/inici</url-pattern>
+  </servlet-mapping>
+</web-app>
