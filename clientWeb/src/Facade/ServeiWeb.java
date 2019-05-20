@@ -16,5 +16,7 @@ public interface ServeiWeb extends java.rmi.Remote {
     public void validaLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController;
     public Facade.TipoLocal[] cercaTipoLocal() throws java.rmi.RemoteException, Facade.ExceptionController;
     public void baixaLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController;
+    public Facade.CaracteristicaTipoLocal[] infoCaracteristicaTipoLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController;
+    public Facade.Caracteristica infoCaracteristica(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController;
     public Facade.Local[] localsAccessibles(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController;
 }

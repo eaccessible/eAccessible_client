@@ -22,7 +22,7 @@
 <div data-role="navbar" id="navbar-1">
 	<ul>
 		<li><a style="background-color:#addffc" href="#" data-icon="search">Cerca</a></li>
-		<li><a href="#" data-icon="edit">Alta d'un local</a></li>
+		<li><a href="AltaLocal.jsp" data-icon="edit">Alta d'un local</a></li>
 	</ul>
 </div>
 	

@@ -35,4 +35,14 @@
     <servlet-name>inici</servlet-name>
     <url-pattern>/inici</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Formulari</display-name>
+    <servlet-name>Formulari</servlet-name>
+    <jsp-file>/Formulari.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Formulari</servlet-name>
+    <url-pattern>/Formulari</url-pattern>
+  </servlet-mapping>
 </web-app>
