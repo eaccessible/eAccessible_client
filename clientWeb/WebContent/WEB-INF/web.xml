@@ -45,4 +45,14 @@
     <servlet-name>Formulari</servlet-name>
     <url-pattern>/Formulari</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AltaCorrecta</display-name>
+    <servlet-name>AltaCorrecta</servlet-name>
+    <jsp-file>/AltaCorrecta.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AltaCorrecta</servlet-name>
+    <url-pattern>/AltaCorrecta</url-pattern>
+  </servlet-mapping>
 </web-app>
