@@ -44,6 +44,24 @@ public class ServeiWebProxy implements Facade.ServeiWeb {
     return serveiWeb;
   }
   
+  public Facade.Local infoLocalPerCodiLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController{
+    if (serveiWeb == null)
+      _initServeiWebProxy();
+    return serveiWeb.infoLocalPerCodiLocal(arg0);
+  }
+  
+  public Facade.TipoLocal[] cercaTipoLocal() throws java.rmi.RemoteException, Facade.ExceptionController{
+    if (serveiWeb == null)
+      _initServeiWebProxy();
+    return serveiWeb.cercaTipoLocal();
+  }
+  
+  public void baixaLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController{
+    if (serveiWeb == null)
+      _initServeiWebProxy();
+    serveiWeb.baixaLocal(arg0);
+  }
+  
   public Facade.Local[] infoLocalPerNomLocalICodiTipoLocal(java.lang.String arg0, int arg1) throws java.rmi.RemoteException, Facade.ExceptionController{
     if (serveiWeb == null)
       _initServeiWebProxy();
@@ -80,24 +98,6 @@ public class ServeiWebProxy implements Facade.ServeiWeb {
     serveiWeb.validaLocal(arg0);
   }
   
-  public Facade.TipoLocal[] cercaTipoLocal() throws java.rmi.RemoteException, Facade.ExceptionController{
-    if (serveiWeb == null)
-      _initServeiWebProxy();
-    return serveiWeb.cercaTipoLocal();
-  }
-  
-  public void baixaLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController{
-    if (serveiWeb == null)
-      _initServeiWebProxy();
-    serveiWeb.baixaLocal(arg0);
-  }
-  
-  public Facade.Local[] localsAccessibles(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController{
-    if (serveiWeb == null)
-      _initServeiWebProxy();
-    return serveiWeb.localsAccessibles(arg0);
-  }
-  
   public Facade.CaracteristicaTipoLocal[] infoCaracteristicaTipoLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController{
     if (serveiWeb == null)
       _initServeiWebProxy();
@@ -110,10 +110,16 @@ public class ServeiWebProxy implements Facade.ServeiWeb {
     return serveiWeb.infoCaracteristica(arg0);
   }
   
-  public Facade.Local infoLocalPerCodiLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController{
+  public Facade.Local[] localsAccessibles(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController{
     if (serveiWeb == null)
       _initServeiWebProxy();
-    return serveiWeb.infoLocalPerCodiLocal(arg0);
+    return serveiWeb.localsAccessibles(arg0);
+  }
+  
+  public Facade.TipoLocal infoTipoLocalPerCodiLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController{
+    if (serveiWeb == null)
+      _initServeiWebProxy();
+    return serveiWeb.infoTipoLocalPerCodiLocal(arg0);
   }
   
   

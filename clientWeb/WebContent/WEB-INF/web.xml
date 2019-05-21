@@ -45,4 +45,14 @@
     <servlet-name>Fitxa</servlet-name>
     <url-pattern>/Fitxa</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MissatgeEliminat</display-name>
+    <servlet-name>MissatgeEliminat</servlet-name>
+    <jsp-file>/MissatgeEliminat.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MissatgeEliminat</servlet-name>
+    <url-pattern>/MissatgeEliminat</url-pattern>
+  </servlet-mapping>
 </web-app>

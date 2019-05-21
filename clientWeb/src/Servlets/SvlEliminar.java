@@ -43,6 +43,8 @@ public class SvlEliminar extends HttpServlet {
 	}
 	
 	public void doFer(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("entra al dofer");
+		
 		HttpSession sessio;
 		
 		String codiLocal = request.getParameter("codiLocal");
@@ -57,10 +59,10 @@ public class SvlEliminar extends HttpServlet {
 		catch (Exception e) { e.printStackTrace();}
 		
 		try {
+			System.out.println("entrada al segon try catch");
 			ServletContext context = getServletContext();
-			RequestDispatcher rd = context.getRequestDispatcher("/Cerca");
+			RequestDispatcher rd = context.getRequestDispatcher("/MissatgeEliminat");
 			rd.forward(request, response);
-			System.out.println("Local eliminat correctament");
 		}
 		catch ( Exception e ) {e.printStackTrace();}
 	}

@@ -8,6 +8,7 @@
 package Facade;
 
 public interface ServeiWeb extends java.rmi.Remote {
+    public Facade.TipoLocal infoTipoLocalPerCodiLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController;
     public Facade.Local infoLocalPerCodiLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController;
     public Facade.TipoLocal[] cercaTipoLocal() throws java.rmi.RemoteException, Facade.ExceptionController;
     public void baixaLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController;

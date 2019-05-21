@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Classes.InfoLocal;
+import Facade.ServeiWeb;
 
 /**
  * Servlet implementation class SvlFitxa
@@ -53,20 +54,25 @@ public class SvlFitxa extends HttpServlet {
 		sessio = request.getSession(true);
 		
 		Facade.Local local = null;
+		Facade.TipoLocal tipolocal = null;
 		
 		if (!codiLocal.isEmpty()) {
 			try{
 				Facade.ServeiWebServiceLocator service = new Facade.ServeiWebServiceLocator();
 				Facade.ServeiWeb port = service.getServeiWebPort();
 				local = port.infoLocalPerCodiLocal(Integer.parseInt(codiLocal));
+				tipolocal = port.infoTipoLocalPerCodiLocal(Integer.parseInt(codiLocal));
 			}
 			catch (Exception e) { e.printStackTrace();}
-		
+
+			
 			sessio.setAttribute("Local", local);
+			sessio.setAttribute("TipoLocal", tipolocal);
 		
 		}else {
 			sessio.setAttribute("Local", null);
 		}
+
 		
 		try {
 			ServletContext context = getServletContext();
