@@ -55,4 +55,34 @@
     <servlet-name>AltaCorrecta</servlet-name>
     <url-pattern>/AltaCorrecta</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MissatgeValidat</display-name>
+    <servlet-name>MissatgeValidat</servlet-name>
+    <jsp-file>/MissatgeValidat.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MissatgeValidat</servlet-name>
+    <url-pattern>/MissatgeValidat</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MissatgeEliminat</display-name>
+    <servlet-name>MissatgeEliminat</servlet-name>
+    <jsp-file>/MissatgeEliminat.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MissatgeEliminat</servlet-name>
+    <url-pattern>/MissatgeEliminat</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Fitxa</display-name>
+    <servlet-name>Fitxa</servlet-name>
+    <jsp-file>/Fitxa.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Fitxa</servlet-name>
+    <url-pattern>/Fitxa</url-pattern>
+  </servlet-mapping>
 </web-app>

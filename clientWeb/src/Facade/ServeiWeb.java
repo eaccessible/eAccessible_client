@@ -9,8 +9,10 @@ package Facade;
 
 public interface ServeiWeb extends java.rmi.Remote {
     public int codiAccessibilitatLliure() throws java.rmi.RemoteException, Facade.ExceptionController;
+    public Facade.Local infoLocalPerCodiLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController;
     public Facade.TipoLocal[] cercaTipoLocal() throws java.rmi.RemoteException, Facade.ExceptionController;
     public void baixaLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController;
+    public Facade.CaracteristicaValor[] infoCaracteristicaLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController;
     public Facade.Local[] infoLocalPerNomLocalICodiTipoLocal(java.lang.String arg0, int arg1) throws java.rmi.RemoteException, Facade.ExceptionController;
     public Facade.Local[] infoLocalPerTipoLocal(int arg0) throws java.rmi.RemoteException, Facade.ExceptionController;
     public void altaLocal(Facade.Local arg0, Facade.Accessibilitat[] arg1) throws java.rmi.RemoteException, Facade.ExceptionController;

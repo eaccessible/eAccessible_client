@@ -36,15 +36,27 @@
 
 
 <% InfoLocal[] locals = (InfoLocal[]) session.getAttribute("Locals"); 
+
 if (locals == null){ %>
 <h3>No s'ha trobat cap local!</h3>	
 <% }else{ %>
 
+<form method="post" action="SvlFitxa">
+
 <h1>Locals:</h1>
+
+<select name="codiLocal"> 
 <%for (int i=0; i<locals.length; i++){%>
-		</br>
-		<li><a  href="Cerca.jsp" ><%=locals[i].getNomlocal()%>, <%=locals[i].getNomtipolocalca()%>, <%=locals[i].getNomvia()%>, <%=locals[i].getNomcarrer()%>, nº<%=locals[i].getNumero()%></a></li>
-<%}}%>	
+	</br>
+	<option value="<%=locals[i].getCodilocal()%>"> <%=locals[i].getNomlocal()%>, <%=locals[i].getNomtipolocalca()%>, <%=locals[i].getNomvia()%>, <%=locals[i].getNomcarrer()%>, nº<%=locals[i].getNumero()%> </option>
+<%} %>	
+</select>
+
+<input type="submit" value="Accedir fitxa">	
+
+</form>
+<%} %>
+
 	
 </body>
 </html>
