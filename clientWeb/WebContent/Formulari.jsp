@@ -65,12 +65,12 @@ Observacions:
 <br>
 
 <h4>Accessibilitat</h4>
-Puntua les seguents caracteristiques on 1 és la puntuació més baixa i 5 la més alta
+Puntua les seguents caracteristiques on 0 és la puntuació més baixa i 5 la més alta
 <br>
 <input type="hidden" name="caracteristiquesLength" value="<%=caracteristiques.length%>">
 <br>
 <%for(int i=0; i<caracteristiques.length; i++){ %>
-	<input type="hidden" name="caracteristica<%=i%>" value="<%=caracteristiques[i].getCodicaracteristica()%>">
+	<input type="hidden" name="codiCaracteristica<%=i%>" value="<%=caracteristiques[i].getCodicaracteristica()%>">
 	<%=caracteristiques[i].getNomcaracteristicaca() %>: 
 	<select type="text" name="valor<%=i%>">
 	<option value="0">0</option>
